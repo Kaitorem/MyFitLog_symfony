@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification Profile{% endblock %}
+
+{% block body %}
+
+<div class="container" id="saisie-objectif"
+    style="padding-top: 30px; padding-bottom: 30px; padding-left: 0px; padding-right: 0px; margin-top: 60px; margin-left: 300px; max-width: 50%;">
+    <h1 class="mt-4" style="font-size: 25px;">Formulaire de modification du Profil</h1>
+
+    <div class="row" style="max-width: 100%;">
+        <fieldset class="form-profile" style="border-color: orange; padding-left: 50px;">
+            <div class="" style="justify-content: center;">
+                {{ form_start(form) }}
+                <div id="padding" style="padding-left: 100px;">
+                    <div class="col-lg-8 col-sm-9">
+                        {{ form_widget(form) }}
+                    </div>
+                    <div class="row mt-4" id="btn-form">
+                        <div class="col-3">
+                            <a class="btn btn-primary" href="{{ path('app_profil') }}"
+                                style="color: white; margin-left: 5px;">Retour</a>
+                        </div>
+
+                        <div class="col-4">
+                            <button class="btn" id="validate-form">{{ button_label|default('Valider') }}</button>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+        </fieldset>
+    </div>
+
+</div>
+
+{% block style%}
+
+<style>
+    @media screen and (max-width : 640px) {
+
+        #btn-form {
+            padding-left: 60px !important;
+        }
+
+        .form-profile {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .container {
+            margin-left: 0px !important;
+            max-width: 100% !important;
+        }
+
+        #padding {
+            padding-left: 0px !important;
+        }
+
+        .col-4 {
+            padding-left: 25px;
+        }
+    }
+</style>
+
+{% endblock %}
+
+{% endblock %}

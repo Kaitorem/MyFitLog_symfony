@@ -1,0 +1,81 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Historique{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <a class="btn btn-primary" href="{{ path('app_board')}}" style="font-size: 16px; color: white;">Retour</a>
+    <h1 style="font-size: 25px; text-align: center; margin-bottom: 15px;  margin-top: 15px;">
+        Historique de mes saisies
+    </h1>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-4">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger mt-4">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <table class="table" style="background-color: white;">
+        <thead>
+            <tr>
+                <th>
+                    <p>Catégorie</p>
+                </th>
+                <th>
+                    <p>Libelle</p>
+                </th>
+                <th>
+                    <p>Valeur</p>
+                </th>
+                <th>
+                    <p>Unite</p>
+                </th>
+                <th>
+                    <p>Date</p>
+                </th>
+                <th>
+                    <p>Actions</p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for historique in app.user.historiques %}
+            <tr>
+                <td>
+                    <p>{{ historique.domaine.libelle }}</p>
+                </td>
+                <td>
+                    <p>{{ historique.libelle.label }}</p>
+                </td>
+                <td>
+                    <p>{{ historique.valeur }}</p>
+                </td>
+                <td>
+                    <p>{{ historique.libelle.unit }}</p>
+                </td>
+                <td>
+                    <p>{{ historique.CreatedAt ? historique.CreatedAt|date('Y-m-d H:i:s') : '' }}</p>
+                </td>
+                <td class="d-flex gap-3">
+                    <a class="btn btn-primary" href="{{ path('app_historique_edit', {'id': historique.id}) }}"
+                        style="font-size: 16px; color: white;">Modifier</a>
+                    {{ include('historique/_delete_form.html.twig') }}
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ path('app_historique_new') }}"> Nouveau</a>
+</div>
+
+{% endblock %}

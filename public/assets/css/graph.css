@@ -1,0 +1,94 @@
+.graph-container {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    gap: 0.8rem;
+}
+
+.graph {
+    background-color: white;
+    padding: 20px;
+    width: 70%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.graph h4 {
+    color: #615FD7;
+}
+
+div#select {
+    display: flex;
+    column-gap: 15px;
+}
+
+div#gap_form {
+    column-gap: 6px;
+    justify-content: end;
+    padding-right: 50px;
+}
+
+button#btn_afficher {
+    height: 25.13px;
+    border: none;
+    border-radius: 3px;
+    background-color: #615FD7;
+    color: white;
+}
+
+.indicator-card {
+    position: relative;
+}
+
+.title-card {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+button.btn.btnActivity {
+    position:absolute;
+    top: 0;
+    right: 0;
+    border-top-right-radius: 5px;
+  }
+
+button.btn.btnHistoriqueSaisie {
+    margin-top: 40px;
+}
+
+  span.effectif {
+    font-size: larger;
+    font-weight: 600;
+}
+
+span.imc {
+    font-weight: 800;
+    color: #615FD7;
+}
+
+.indicator_card.imc {
+    width: 36%;
+}
+
+#activite_physique_card_poids {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.indicator_card img {
+    width: 50px;
+    margin: auto;
+}
+
+img.poids_img {
+    fill: #615FD7;
+}
+

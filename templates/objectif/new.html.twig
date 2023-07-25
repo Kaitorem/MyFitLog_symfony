@@ -1,0 +1,31 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}New Objectif{% endblock %}
+
+{% block content %}
+<div class="mb-5">
+    <a href="{{ path('app_home') }}"><img src="assets/images/Logo.png" alt="" loading="lazy"
+            style="height: 100px;margin-left:90px" /></a>
+</div>
+<div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-lg-6">
+        <div class="container" id="saisie-objectif" style="text-align: center; background-color: white;">
+            <h1 style="font-size: 25px;">Créer l'Objectif de la semaine</h1>
+            {{ include('objectif/_form.html.twig') }}
+        </div>
+    </div>
+    <div class="col-2">
+    </div>
+</div>
+
+{% block style%}
+
+<style>
+    @media screen and (max-width : 640px) {}
+</style>
+
+{% endblock %}
+
+{% endblock %}

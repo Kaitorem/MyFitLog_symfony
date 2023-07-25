@@ -1,0 +1,125 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}MyFitLog{% endblock %}
+
+{% block header %}
+
+<div>
+    <div>
+        <h1>MyFitLog</h1>
+        <h2>Suivez votre santé avec MyFitLog</h2>
+        <p>Améliorez votre santé en surveillant votre activité physique grâce à notre application de surveillance de
+            la
+            santé. Visualisez vos progrès en temps réel avec nos graphiques et tableaux pour rester <b>motivé</b>
+            et
+            atteindre
+            <b>vos objectifs</b> de santé et de condition physique.
+        </p>
+    </div>
+    <img src="assets/images/img_header.png" alt="Personne meditant">
+</div>
+{% endblock %}
+
+{% block content %}
+
+<section id="concept">
+    <div>
+        <img src="assets/images/graph.png" alt="Graphique">
+        <div>
+            <h3>Le concept</h3>
+            <p>Bienvenue sur MyFitLog, l'application de surveillance de la santé qui vous accompagne dans votre
+                parcours
+                de bien-être et de condition physique. Nous avons créé cette application pour aider les utilisateurs
+                à
+                suivre leur santé et leur progression de manière simple et pratique. Voici quelques points de
+                concept
+                clés de notre application :</p>
+        </div>
+    </div>
+    <div>
+        <div>
+            <img src="assets/images/icon-park-solid_sport.svg" alt="Sport">
+            <h4>Suivi de l’activité physique</h4>
+            <p>MyFitLog permet aux utilisateurs de suivre leur activité physique en enregistrant le nombre de pas, la
+                distance parcourue, les calories brûlées et bien plus encore. Les graphiques et tableaux de
+                l'application
+                vous aideront à visualiser vos progrès et à atteindre vos objectifs de condition physique.</p>
+        </div>
+        <div>
+            <img src="assets/images/mdi_graph-bell-curve.svg" alt="Graphique">
+            <h4>Visualisation des données</h4>
+            <p>L'application comprend des graphiques et tableaux pour vous aider à visualiser vos progrès. Vous pouvez
+                personnaliser les tableaux en fonction de vos préférences pour mieux suivre vos mesures. Avec MyFitLog,
+                vous pouvez suivre votre santé et votre condition physique en un seul endroit.</p>
+        </div>
+    </div>
+</section>
+
+<section id="a_propos">
+    <div>
+        <div>
+            <h3>À propos</h3>
+            <p>Chez MyFitLog, notre équipe est composée de professionnels passionnés par la santé et la condition
+                physique.
+                Nous sommes une équipe multidisciplinaire, avec des développeurs, des designers, des experts en
+                nutrition et
+                en activité physique, des spécialistes du sommeil et bien plus encore. Nous sommes tous unis par la
+                vision
+                de créer une application de surveillance de la santé qui soit à la fois simple et efficace.</p>
+        </div>
+        <img src="assets/images/a_propos.png" alt="Equipe de personnes">
+    </div>
+    <div>
+        <div>
+            <img src="assets/images/iconoir_design-nib.svg" alt="Stylo">
+            <p class="btn">Design</p>
+            <p>Notre équipe de design s'assure que l'application est à la fois esthétique et conviviale, avec une
+                interface
+                utilisateur simple et élégante.</p>
+        </div>
+
+        <div>
+            <img src="assets/images/material-symbols_computer-outline.svg" alt="Ordinateur">
+            <p class="btn">Développement</p>
+            <p>Notre équipe de développement est composée de programmeurs expérimentés, qui travaillent en étroite
+                collaboration avec les experts en santé et en condition physique pour créer une application intuitive et
+                facile à utiliser.</p>
+        </div>
+
+        <div>
+            <img src="assets/images/mdi_food-apple-outline.svg" alt="Pomme">
+            <p class="btn">Nutrition et activité physique</p>
+            <p>Notre équipe de nutrition et d'activité physique comprend des diététiciens et des entraîneurs personnels
+                qualifiés, qui aident à créer des plans de régime et d'entraînement personnalisés pour les utilisateurs.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<section id="incitation_a_inscription">
+    <h3>Améliorez votre santé et votre condition physique<br>avec MyFitLog</h3>
+    <div>
+        <div>
+            <p>MyFitLog est l'application de surveillance de la santé idéale pour suivre votre activité physique, votre
+                alimentation et votre sommeil. Avec nos graphiques et tableaux personnalisables, vous pouvez suivre vos
+                progrès en temps réel et atteindre vos objectifs de bien-être.
+                <br><br>
+                Nos professionnels qualifiés vous aident à personnaliser des plans de régime et d'entraînement pour vous
+                aider à atteindre vos objectifs plus rapidement.
+            </p>
+            <div>
+                <p>Inscription <b>simple</b> et <b>gratuite</b>
+                    <br>Inscrivez-vous dès aujourd'hui et commencez à améliorer votre santé et votre condition physique.
+                </p>
+                <button class="btn">
+                    <a href="{{ path('app_register') }}">S'inscrire</a>
+                </button>
+            </div>
+
+        </div>
+        <img src="assets/images/Dashboard.png" alt="Dashboard de l'application">
+    </div>
+</section>
+
+{% endblock %}

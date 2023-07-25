@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+<div id="dashboard" style="display: flex; justify-content: center;">
+
+    <header>
+        <div class="navbar navbar-expand-lg navbar-light "
+            style="flex-direction: column; height: 100vh; position: fixed; left: 0; background-color: white; height: 100vh; width: 150px; display: flex;align-content: flex-start;justify-content: center; padding-top:30px">
+            <a href="{{ path('app_home') }}"> <img src="/assets/images/logo_noir.svg" style="width: 80px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul
+                    class="navbar-nav nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center justify-content-between w-100 px-3 align-items-center">
+                    {% if is_granted('ROLE_ADMIN') %}
+
+                        <li style="margin-top : 50px;">
+                            <a href="{{ path('app_board') }}" style="text-decoration: none;">
+                                <img src="/assets/images/home.svg" alt="home" style="width:45px">Home
+                            </a>
+                        </li>
+
+                        <li style="margin-top : 50px;">
+                            <a href="{{ path('admin') }}" style="text-decoration: none;">
+                                <img src="/assets/images/monitor-dashboard.svg" alt="admin" style="width:40px">Admin
+                            </a>
+                        </li>
+                    </li>
+                    {% elseif is_granted('ROLE_USER') %}
+                        <li style="margin-top : 50px;">
+                            <a href="{{ path('app_board') }}" style="text-decoration: none;">
+                                <img src="/assets/images/icon-park-solid_sport._black.svg" alt="Sport" style="width:30px">Marche
+                            </a>
+                        </li>
+                        <li style="margin-top : 50px;">
+                            <a href="{{ path('app_board_poids') }}" style="text-decoration: none;">
+                                <img src="/assets/images/weight.svg" alt="Sport" style="width:30px">Poids
+                            </a>
+                        </li>
+                    {% endif %}
+                   
+
+                    <li style="margin-top : 50px;">
+                        <a href="{{ path('app_profil') }}" style="text-decoration: none;">
+                            <img src="/assets/images/parametres.svg" alt="Paramètres" style="width:30px">Profil
+                        </a>
+                    </li>
+                    <li style="margin-top : 50px;">
+                        <a href="{{ path('app_logout') }}" style="text-decoration: none;">
+                            <p>Déconnexion</p>
+                        </a>
+                    </li>
+                </ul>
+
+
+
+
+            </div>
+        </div>
+    </header>
+    <main
+        style="padding-left:180px; padding-right: 30px; background-color: #F2F3F9; padding-top:80px;width: 100%; min-height: 100vh;">
+
+
+        {% block content %}{% endblock %}
+    </main>
+</div>
+{% endblock %}

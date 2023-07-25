@@ -1,0 +1,23 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Edit Historique{% endblock %}
+
+{% block content %}
+<div class="mb-5">
+    <a href="{{ path('app_home') }}"><img src="assets/images/Logo.png" alt="" loading="lazy"
+            style="height: 100px;margin-left:90px" /></a>
+</div>
+
+<div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-lg-6">
+        <div class="container" id="saisie-objectif" style="background-color: white; padding-top: 20px;">
+            <h1 style="font-size: 25px;">Modification de données</h1>
+            {{ include('historique/_form.html.twig', {'button_label': 'Valider'}) }}
+        </div>
+    </div>
+    <div class="col-2">
+    </div>
+</div>
+{% endblock %}

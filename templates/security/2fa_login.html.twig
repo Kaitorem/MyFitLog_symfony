@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SaisieController!{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Authentication Code google</h1>
+    <div class="d-flex flex-column align-items-center">
+        <div>
+            <img id="imageQRcode" src="{{qrCode}}" alt="QR Code" name="imageQRcode">
+        </div>
+
+         <form class="form" action="/2fa_check" method="post">
+            <p class="widget">
+                <div class="col-6">
+                    <input
+                        id="_auth_code"
+                        type="text"
+                        name="_auth_code"
+                        autocomplete="one-time-code"
+                        autofocus required
+                    />
+                </div>
+            </p>
+        
+            <a class="btn btn-primary" href="/logout">Retour</a>
+            <input class="btn btn-primary" type="submit" value="Valider" />
+        </form>
+        
+    </div>
+{% endblock %}
+
+
+

@@ -1,0 +1,102 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Dashboard
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+
+{% block content %}
+
+	<div id="dasboard_activite_physique" class="container">
+		{% if is_granted('ROLE_ADMIN') %}
+
+			<h1>Bienvenue
+				{{app.user.firstName}}
+				{{app.user.lastName}}</h1>
+
+			<h3>Vous êtes contecté en tant qu'Administrateur</h3>
+
+		{% elseif is_granted('ROLE_USER') %}
+			<div id="dashboard_activite_physique_actions">
+				<h1>Dashboard</h1>
+				<div>
+					<button type="button" class="btn_objectif">
+						<a href="{{ path('app_objectif_new') }}">
+							<i class="fa-solid fa-plus" style="color: #615FD7;"></i>
+							Ajouter un objectif</a>
+					</button>
+					<button type="button" class="btn_objectif">
+						<a href="{{ path('app_objectif_index')}}">
+							<i class="fa-solid fa-pencil" style="color: #615FD7;"></i>
+							Modifier un objectif</a>
+					</button>
+				</div>
+			</div>
+
+			{% if app.user.objectifs is empty %}
+				<div id="activite_physique_card">
+					<div class="indicator_card">
+						<img src="assets/images/mdi_foot-print.svg" alt="Pas">
+						<div>
+							<h3>Nombre de Pas</h3>
+							<p>-<span>/-</span>
+							</p>
+						</div>
+						<button class="btn ">
+							<a href="{{ path('app_objectif_new') }}">
+								Ajouter</a>
+						</button>
+					</div>
+				</div>
+			{% else %}
+				<div id="activite_physique_card_poids" class="d-flex flex-wrap">
+					<div class="indicator_card imc">
+							<img src="/assets/images/weight.svg" alt="Indice de Masse Corporelle" class="poids_img">
+							<div>
+								<h4>Indice de Masse Corporelle</h4>
+								<div class="d-flex flex-column fs-5 gap-1">
+									<div>
+                                        Votre indice de Masse Corporelle est de <span class="imc"> {{ imc }} </span>
+                                    </div>
+                                    <div>
+                                         {{ interpretationImc }} 
+                                    </div>
+								</div>
+
+							</div>
+						</div>
+
+
+                        <div class="indicator_card imc">
+							<img src="/assets/images/weight.svg" alt="Indice de Masse Grasse" class="poids_img">
+							<div>
+								<h4>Indice de Masse Grasse</h4>
+								<div class="d-flex flex-column fs-5 gap-1">
+									<div>
+                                        Votre indice de Masse Grasse est de <span class="imc"> {{ img }} % </span>
+                                    </div>
+                                    <div class="interpretation">
+                                         {{ interpretationImg }} 
+                                    </div>
+								</div>
+
+							</div>
+						</div>
+				</div>
+
+
+			{%  endif %}
+
+			<button type="button" class="btn btnHistoriqueSaisie">
+				<a href="{{ path('app_historique_index')}}">
+					Historique de mes saisies</a>
+			</button>
+		{%  endif %}
+
+
+	</div>
+{% endblock %}

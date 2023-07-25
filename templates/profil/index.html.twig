@@ -1,0 +1,98 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #ededf0;;
+    }
+    .btn {
+        background-color: white;
+        color: #15141A;
+        border-radius: 25px;
+        border: none;
+        padding: 10px 15px;
+        font-size: 17px;
+        font-family: "Open Sans", sans-serif;
+    }
+    .fas {
+        color: var(--blue);
+    }
+    .data {
+        background-color: var(--blue);
+        color: white;
+        border-radius: 0px;
+        border: none;
+        padding: 7px;
+        font-size: 17px;
+        font-family: "Open Sans", sans-serif
+    }
+    .form-control:disabled {
+        background-color: white;
+    }
+    .label {
+        margin-bottom:5px;
+        font-size:20px;
+    }
+</style>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Profil</h1>
+        <a class="btn btn-primary shadow-sm" href="{{ path('app_edit_profil') }}"><icon class="fas fa-edit" style="padding-right:15px;"></icon><span>Éditer Profil</span></a>
+    </div>
+    {% for flash_error in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="bg-white p-5 shadow-sm rounded-circle">
+            <icon class="fas fa-user" style="font-size:100px"></icon>
+        </div>
+    </div>
+   
+    <div class="row justify-content-center mt-5 mb-4">
+        <div class="col-4">
+            <h3 class="label">Prénom</h3>
+            <input type="text" class="form-control" placeholder="{{ app.user.firstName }}" disabled>
+        </div>
+        <div class="col-4">
+            <h3 class="label">Nom</h3>
+            <input type="text" class="form-control" placeholder="{{ app.user.lastName }}" disabled>
+        </div>
+    </div>
+    <div class="row justify-content-center my-4">
+        <div class="col-4">
+            <h3 class="label">Email</h3>
+            <input type="text" class="form-control" placeholder="{{ app.user.email }}" disabled>
+        </div>
+        <div class="col-4">
+            <h3 class="label">Sexe</h3>
+            <input type="text" class="form-control" placeholder="{{ app.user.sexe }}" disabled>
+        </div>
+    </div>
+    <div class="row justify-content-center my-4">
+        <div class="col-4">
+            <h3 class="label">Taille</h3>
+            <input type="text" class="form-control" placeholder="{{ app.user.taille }} cm" disabled>
+        </div>
+        <div class="col-4">
+            <h3 class="label">Poids</h3>
+            <input type="text" class="form-control" placeholder="{{ app.user.poids }} kg" disabled>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h3 class="label">Date naissance</h3>
+            <input type="text" class="form-control" placeholder="{{ app.user.naissance|date("m/d/Y") }}" disabled>
+        </div>
+    </div>
+
+
+
+
+    
+</div>
+{% endblock %}

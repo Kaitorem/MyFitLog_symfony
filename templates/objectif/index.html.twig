@@ -1,0 +1,68 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Objectifs{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <a class="btn btn-primary" href="{{ path('app_board')}}" style="font-size: 16px; color: white;">Retour</a>
+    <h1 style="font-size: 25px; text-align: center; margin-bottom: 15px;  margin-top: 15px;">Objectifs </h1>
+
+    <div style="overflow-x: auto;">
+        <table class="table table-hover" style="background-color: white;">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <p>Domaine</p>
+                    </th>
+                    <th scope="col">
+                        <p>Libelle</p>
+                    </th>
+                    <th scope="col">
+                        <p>Valeur</p>
+                    </th>
+                    <th scope="col">
+                        <p>Unité</p>
+                    </th>
+                    <th scope="col">
+                        <p>Date</p>
+                    </th>
+                    <th scope="col">
+                        <p>Actions</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+            {% for objectif in app.user.objectifs %}
+            <tr>
+                <td>
+                    <p>{{objectif.domaine.libelle}}</p>
+                </td>
+                <td>
+                    <p>{{objectif.libelle.label}}</p>
+                </td>
+                <td>
+                    <p>{{objectif.valeur}}</p>
+                </td>
+                <td>
+                    <p>{{objectif.libelle.unit}}</p>
+                </td>
+                <td>
+                    <p>{{objectif.CreatedAt|date("m/d/Y")}}</p>
+                </td>
+                <td class="d-flex gap-3">
+                    <a class="btn btn-primary" href="{{ path('app_objectif_edit', {'id': objectif.id}) }}"
+                        style="font-size: 16px; color: white;">Modifier</a>
+                    {{ include('objectif/_delete_form.html.twig') }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ path('app_objectif_new') }}"> Nouveau</a>
+
+
+</div>
+
+{% endblock %}

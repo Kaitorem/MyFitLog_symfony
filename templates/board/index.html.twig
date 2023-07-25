@@ -1,0 +1,134 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+
+{% block content %}
+
+<div id="dasboard_activite_physique" class="container">
+    {% if is_granted('ROLE_ADMIN') %}
+
+        <h1>Bienvenue {{app.user.firstName}} {{app.user.lastName}}</h1>
+
+        <h3>Vous êtes contecté en tant qu'Administrateur</h3>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <h3 class="mb-1">MyFitLog</h3>
+        <h2 class="mb-1">Suivez votre santé avec MyFitLog</h2>
+        <p>
+            Améliorez votre santé en surveillant votre activité physique grâce à notre application de surveillance de la
+            santé. Visualisez vos progrès en temps réel avec nos graphiques et tableaux pour rester <b>motivé </b>et atteindre <b>vos objectifs</b> de santé et de conditions physique.
+        </p>
+
+    {% elseif is_granted('ROLE_USER') %}
+        <div id="dashboard_activite_physique_actions">
+            <h1>Dashboard</h1>
+            <div>
+                <button type="button" class="btn_objectif">
+                    <a href="{{ path('app_objectif_new') }}"> <i class="fa-solid fa-plus" style="color: #615FD7;"></i>
+                        Ajouter un objectif</a>
+                </button>
+                <button type="button" class="btn_objectif">
+                    <a href="{{ path('app_historique_new')}}"> <i class="fa-solid fa-pencil" style="color: #615FD7;"></i>
+                        Saisie du jour</a>
+                </button>
+            </div>
+        </div>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+    
+        {% if app.user.objectifs is empty %}
+            <div id="activite_physique_card">
+                <div class="indicator_card">
+                    <img src="/assets/images/mdi_foot-print.svg" alt="Pas">
+                    <div>
+                        <h3>Nombre de Pas</h3>
+                        <p>-<span>/-</span></p>
+                    </div>
+                    <button class="btn ">
+                        <a href="{{ path('app_objectif_new') }}"> Ajouter</a>
+                    </button>
+                </div>
+            </div>
+        {% else %}
+                <div id="activite_physique_card" class="d-flex flex-wrap px-5">
+                    {% for key, data in datas %}
+                        <div class="indicator_card">
+                            <img src="{{ data['image'] }}" alt="{{ key }}">
+                            <div>
+                                <h4>{{ key }}</h4>
+                                    <div class="d-flex gap-5 fs-4">
+                                        <span>
+                                            <span class="effectif"> {{ data['effectif'] }} </span>  
+                                                /
+                                        <span style="color: #615FD7" class="fw-bold">{{ data['objectif'] }}</span> <span style="color: #615FD7" class="fw-bold"> {{ data['unite'] }} </span>
+                                        </span>
+                                    </div>
+                                
+                            </div>
+                            
+                            {% if key == 'Pas' %}
+                                <button class="btn btnActivity"> <a href="{{ path('app_objectif_edit', {'id': data['objectif_id']}) }}"> Modifier </a> </button>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="graph-container">
+                    {{ form_start(form, {'attr': {'id': 'form_affichage'}}) }}
+                        <div class="d-flex align-items-end" id="gap_form">
+                            {{ form_widget(form) }}
+                            <button type="submit" id="btn_afficher">afficher</button>
+                        </div>
+                    {{ form_end(form) }}
+
+                <div class="d-flex w-100 gap-md-5 px-5">
+                    <div class="graph">
+                        <h4>Nombre de pas</h4>
+                        {{ render_chart(chart_pas) }}
+                    </div>
+
+                    <div class="graph">
+                        <h4>Distance parcourue par rapport à l'objectif</h4>
+                        {{ render_chart(chart_pas_objectif) }}
+                    </div>
+                </div>
+	    </div>
+	
+        {%  endif %}
+        
+        <button type="button" class="btn btnHistoriqueSaisie">
+            <a href="{{ path('app_objectif_index')}}">
+                Historique de mes objectifs</a>
+        </button>
+        <button type="button" class="btn btnHistoriqueSaisie">
+            <a href="{{ path('app_historique_index')}}">
+                Historique de mes saisies</a>
+        </button>
+    {%  endif %}
+    
+
+</div>
+{% endblock %}

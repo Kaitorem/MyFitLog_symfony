@@ -1,0 +1,57 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Dashboard
+{% endblock %}
+
+{% block content %}
+
+	<div id="dasboard_activite_physique" class="container">
+		<div id="dashboard_activite_physique_actions">
+			<h1>Dashboard</h1>
+
+			<div>
+				<button type="button" class="btn_objectif">
+					<a href="{{ path('app_objectif_new') }}">
+						<i class="fa-solid fa-plus" style="color: #615FD7;"></i>
+						Ajouter un objectif</a>
+				</button>
+				<button type="button" class="btn_objectif">
+					<a href="{{ path('app_objectif_index')}}">
+						<i class="fa-solid fa-pencil" style="color: #615FD7;"></i>
+						Modifier un objectif</a>
+				</button>
+			</div>
+		</div>
+		
+        <h4>Activité physique</h4>
+		<div id="activite_physique_card" class="d-flex flex-wrap">
+			
+            {% for key, data in datas %}
+                <div class="indicator_card">
+                    <img src="{{ data['image'] }}" alt="{{ key }}">
+                    <div>
+                        <h4>{{ key }}</h4>
+                            <div class="d-flex gap-5 fs-4">
+                                <span>
+                                    <span class="effectif"> {{ data['effectif'] }} </span>  
+                                        /
+                                   <span style="color: #615FD7" class="fw-bold">{{ data['objectif'] }}</span> <span style="color: #615FD7" class="fw-bold"> {{ data['unite'] }} </span>
+                                </span>
+                            </div>
+                        
+                    </div>
+                    
+                    {% if key == 'Pas' %}
+                        <button class="btn btnActivity"> <a href="{{ path('app_objectif_edit', {'id': data['objectif_id']}) }}"> Modifier </a> </button>
+                    {% endif %}
+                </div>
+            {% endfor %}
+		</div>
+
+		<button type="button" class="btn">
+			<a href="{{ path('app_historique_index')}}">
+				Historique de mes saisies</a>
+		</button>
+
+	</div>
+{% endblock %}

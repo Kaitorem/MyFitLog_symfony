@@ -1,0 +1,56 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Hello ObjectifController!{% endblock %}
+
+{% block body %}
+
+<div class="row" style="max-width: 100%;">
+    <fieldset class="" style="border-color: orange;">
+        <div style="align-items: center;">
+            {{ form_start(form) }}
+            <div id="padding" style="padding-left: 90px;">
+                <div class="col-lg-9 col-sm-9">
+                    {{ form_widget(form) }}
+                </div>
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <a class="btn btn-primary" href="{{ path('app_board') }}"
+                            style="color: white; margin-left: 5px;">Retour</a>
+                    </div>
+                    <div class="col-1">
+
+                    </div>
+                    <div class="col-3">
+                        <button class="btn">{{ button_label|default('Valider') }}</button>
+                    </div>
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+    </fieldset>
+    <div class="">
+        <!-- <img src="assets/img/image_header.svg" alt="" loading="lazy" /> -->
+    </div>
+</div>
+
+{% block style%}
+
+<style>
+    @media screen and (max-width : 640px) {
+
+        #padding {
+            padding-left: 0px !important;
+        }
+
+        .mt-4 {
+            padding-left: 61px;
+        }
+
+        .col-3 {
+            padding-left: 15px;
+        }
+    }
+</style>
+
+{% endblock %}
+{% endblock %}
